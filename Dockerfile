@@ -5,4 +5,8 @@ RUN apk update && apk add curl \
     | zcat > /usr/local/bin/go-cron \
   && chmod u+x /usr/local/bin/go-cron
 
-# docker run webwurst/docker-go-cron go-cron "*/10 * * * * *" /bin/sh -c "echo hello"
+COPY go-cron.sh /usr/local/bin/
+RUN chmod u+x /usr/local/bin/go-cron.sh
+CMD ["go-cron.sh"]
+
+# $ docker run -e SCHEDULE="@every 10s" -e COMMAND="echo hello" local/go-cron
