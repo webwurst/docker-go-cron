@@ -1,3 +1,6 @@
 cron:
   build: .
-  command: "go-cron '*/10 * * * * *' /bin/sh -c 'echo hello'"
+  # command: "go-cron '*/10 * * * * *' /bin/sh -c 'echo hello'"
+  environment:
+    SCHEDULE: "@every 10s"
+    COMMAND: "echo hello"
